@@ -19,7 +19,6 @@ animateSky= (progress)->
     range = 0.1
     before = 0.9
 
-  console.log step
   r = red[step] +  (progress - before) / range * (red[step+1] - red[step])
   g = green[step] +  (progress - before) / range * (green[step+1] - green[step])
   b = blue[step] +  (progress - before) / range * (blue[step+1] - blue[step])
@@ -52,13 +51,15 @@ setLogoProgress = (progress)->
   animateCity progress
 
 window.animateLogo = ->
-
-  setLogoProgress 0
+  setLogoProgress 0.5
   height = $('.scroll-wrapper')[0].scrollHeight
   windowHeight = $(window).height()
   $('body').on 'scroll', (e)->
     progress =  - $('#content').offset().top / (height-windowHeight)
-    setLogoProgress progress
+    if progress < 0
+      setLogoProgress 0.5
+    else
+      setLogoProgress progress
 
 window.animateLogoStatic = ->
   progress = 50
