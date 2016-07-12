@@ -4,7 +4,7 @@ class Day < ActiveRecord::Base
 
   belongs_to :user
   has_many :moments, dependent: :destroy
-  accepts_nested_attributes_for :moments, reject_if: proc { |attributes| attributes.values.all?(&:blank?) }, allow_destroy: true
+  accepts_nested_attributes_for :moments, reject_if: proc { |attributes| attributes.except("seq").values.all?(&:blank?) }, allow_destroy: true
   accepts_nested_attributes_for :user
   validates :country, presence: true
   as_param :build_permalink

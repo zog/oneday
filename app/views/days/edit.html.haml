@@ -20,8 +20,8 @@
   %p.explain
     Here you can add the pictures of your day. You can add a time and a legend to each, but you don't have to.
   %ul.moments
-    - resource.moments.build
-    = f.simple_fields_for :moments, f.object.moments.order(:seq) do |ff|
+    - n = f.object.moments.build
+    = f.simple_fields_for :moments, f.object.moments.order(:seq) + [n] do |ff|
       %li.moment.row{class: ff.object.new_record? && 'new-moment'}
         .col-md-4
           = ff.input :seq, as: :hidden

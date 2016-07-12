@@ -3,6 +3,7 @@ class window.MomentsForm
     @template = $('.new-moment').last().clone()
     @initBehaviours()
     @initButtons()
+    @setSeq()
 
   initBehaviours: ->
     $(document).on 'file:added', (e)=>
@@ -24,6 +25,7 @@ class window.MomentsForm
     newbie.insertAfter $('.new-moment').last()
     $(document).trigger 'nested:fieldAdded'
     @initButtons()
+    @setSeq()
 
   initButtons: ->
     $('.moment').find(".remove").click (e)->
@@ -34,4 +36,10 @@ class window.MomentsForm
       moment.addClass 'disabled'
       moment.find("[name*=destroy]").val "1"
       false
+
+  setSeq: ->
+    i = 0
+    for e in $('[name*=seq]')
+      $(e).val i
+      i += 1
 
