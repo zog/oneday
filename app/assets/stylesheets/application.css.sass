@@ -38,6 +38,9 @@ html, body
   background-color: #333
   color: white
   padding: 10px 20px
+  z-index: 10
+  &:hover
+    color: $color-grey-light
 
 .select2-container-multi.select2-container-active .select2-choices, .select2-container.select2-container-active .select2-choice
   +box-shadow(none)
@@ -64,6 +67,7 @@ header
   height: $scrolled_height - 20px
   left: 0
   right: 0
+  z-index: 5
   +transition(opacity 0.3s)
   .logo
     margin-left: - ($scrolled_height - 10px)
