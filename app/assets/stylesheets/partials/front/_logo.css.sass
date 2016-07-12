@@ -1,9 +1,9 @@
 .logo
   +relative
-  border-radius: 100px
+  border-radius: 1000px
   overflow: hidden
 
-  .crown, .sky, .sun, .city, .car
+  .crown, .sky, .sun, .city, .city-2, .car
     +absolute(0,0,0,0)
     background-size: 100% 100%
     background-position: 50% 50%
@@ -16,21 +16,24 @@
     border-radius: 100px
   .sun
     background-size: 50%
-    top: 25%
+    top: 20%
     background-position:  50% 0
     transform-origin: 50% 100%
     height: 100%
     background-image: url(/assets/logo/sun.png)
   .city
-    background-size: 100%
+    background-size: 50% 100%
     background-image: url(/assets/logo/town.png)
-    width: 140%
+    width: 200%
     right: auto
+    background-position: 0% 50%
+    background-repeat: repeat-x
+    left: -50%
   .car
     width: 10%
     height: 5%
     bottom: 26%
-    left: 44%
+    left: 40%
     top: auto
     background-image: url(/assets/logo/car.png)
 

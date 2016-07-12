@@ -55,10 +55,17 @@ header
     margin: auto
     height: $header_height
     overflow: hidden
-    img
-      height: $header_height
+    a
       display: block
+      overflow: hidden
+      height: $header_height
+      width: $header_height
       margin: auto
+      border-radius: $header_height/2
+      +relative
+      z-index: 1
+    .logo
+      +absolute(0,0,0,0)
 
 .scrolled-header
   +fixed
@@ -67,12 +74,13 @@ header
   height: $scrolled_height - 20px
   left: 0
   right: 0
-  z-index: 5
+  z-index: 0
   +transition(opacity 0.3s)
   .logo
     margin-left: - ($scrolled_height - 10px)
     height: $scrolled_height - 20px
     width: $scrolled_height - 20px
+
     img
       height: $scrolled_height - 20px
       display: block
