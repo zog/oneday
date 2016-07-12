@@ -1,0 +1,9 @@
+en:
+  pwdcalc:
+    too_short: "Password must be at least %{minimum} chars long."
+    weak: "feable"
+    fair: "average"
+    good: "good"
+    strong: "strong"
+    very_strong: "perfect!"
+    dictionary_word: "That's too obvious."

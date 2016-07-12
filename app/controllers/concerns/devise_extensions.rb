@@ -5,11 +5,7 @@ module DeviseExtensions
 
   def after_sign_in_path_for(resource)
     return params[:redirect] if params[:redirect]
-    if current_user.user?
-      [:new, :day]
-    else
-      admin_root_path
-    end
+    [:new, :day]
   end
 
   def after_sign_up_path_for(resource)
