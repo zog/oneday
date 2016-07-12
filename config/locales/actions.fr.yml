@@ -1,0 +1,54 @@
+fr:
+  actions: &actions
+    add: Ajouter
+    admin: Admin
+    approve: Approuver
+    broadcast: Diffuser
+    browse: Parcourir
+    cancel: Annuler
+    clone: Dupliquer
+    connect: Connexion
+    create_new: Nouveau
+    create: Nouveau
+    destroy: Supprimer
+    download: Télécharger
+    edit_account: Profil
+    edit_profile: Modifier mon profil
+    edit: Editer
+    export: Exporter
+    feature: Activer
+    filter: Filtrer
+    handle: Traiter
+    import: Importer
+    learn_more: 'En savoir plus'
+    mark_as_read: Marquer comme lu
+    masquerade: Mascarade
+    modify: Modifier
+    preview: Aperçu
+    print: Imprimer
+    publish: Publier
+    read_more: 'Lire la suite'
+    recover_password: Mot de passe oublié ?
+    remove: Enlever
+    reset_password: Générer un nouveau mot de passe
+    retry: Réessayer
+    revocate: Révoquer
+    select_file: Choisissez une image
+    send_password: Envoyer le mot de passe
+    show_all: Voir tout
+    show_profile: Voir mon profil
+    show: Voir
+    sign_in: Identifiez-vous
+    sign_out: Se déconnecter
+    sign_up: S'inscrire
+    submit: Envoyer
+    unfeature: Désactiver
+    unhandle: Ré-ouvrir le traitement
+    unpublish: Dépublier
+    unvalidate: Invalider
+    update: Enregistrer
+    validate: Valider
+    view_all: Voir tout
+
+  admin:
+    actions: *actions

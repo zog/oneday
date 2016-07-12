@@ -1,0 +1,41 @@
+
+@import compass
+@import bootstrap-markdown
+
+@import partials/common
+@import partials/variables
+@import partials/responsive
+@import partials/mixins
+@import partials/sortable_table
+@import partials/panel
+@import partials/avatar
+
+@import partials/admin/framework_and_overrides
+@import partials/inputs/all
+@import partials/admin/welcome
+@import partials/admin/mobile
+@import partials/admin/avatar
+
+.direct-upload-section
+  visibility: hidden
+  +fixed
+
+.navbar-brand
+  background-image: url(/assets/logo.png)
+  background-size: cover
+  width: 68px
+  height: 68px
+  margin-right: 10px
+  span.text
+    display: none
+
+.admin-page-show, .markdown-help .preview
+  padding: 15px
+
+  @import application
+
+  .text-content
+    +content_styles
+
+  .fa
+    font-family: 'FontAwesome'

@@ -1,0 +1,14 @@
+= show_avatar user.avatar, :thumb
+
+- if can? :edit, user
+  = link_to user.name, [controller.controller_namespace, user].flatten
+- else
+  = user.name
+
+= "(#{user.email})"
+- if !user.user?
+  .details
+    - if user.role == 'admin'
+      .label.label-warning= "roles.#{user.role}".t
+    - else
+      .label.label-info=  "roles.#{user.role}".t

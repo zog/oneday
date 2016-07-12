@@ -1,0 +1,38 @@
+fr:
+  markdown: &markdown "Le texte peut être mis en forme en suivant les règles de la syntaxe <a href='http://fr.wikipedia.org/wiki/Markdown'>Markdown</a>."
+  <%= YAML::include("models_fields.fr.yml") %>
+  simple_form:
+    "yes": 'Oui'
+    "no": 'Non'
+
+    required:
+      text: 'obligatoire'
+      mark: '*'
+
+    labels:
+      <<: *fields
+
+      crop_settings: 'Partie à converser lors du recadrage :'
+
+    placeholders:
+      file: 'Choisissez un fichier'
+      string: 'Saisissez votre texte ici'
+      number: 'Insérer un nombre ici'
+      datetime: 'JJ/MM/AAAA'
+      email: 'par ex: prenom.nom@entreprise.fr'
+      enum: 'Choisissez une option'
+      text: 'Saisissez votre texte'
+      markdown: 'Saisissez votre texte'
+      password: '••••••••'
+      pwdcalc_simple: '••••••••'
+      tel: 'par ex: 06 00 00 00 00'
+      integer: 'Saisissez une valeur'
+      type: 'Choisissez une option'
+      select: 'Choisissez une option'
+      crop_settings: 'Choisissez une option'
+      float: '0.000'
+      url: http://nom-de-domaine.fr
+
+    hints:
+      user:
+        password: Le mot de passe doit contenir 8 caractères minimum

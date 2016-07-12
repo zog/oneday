@@ -1,0 +1,52 @@
+en:
+  identified: &identified
+    civility: Civilité
+    email: Email
+    first_name: Prénom
+    last_name: Nom
+
+  contactable: &contactable
+    phone: Téléphone
+    address: Addresse
+    zipcode: Code Postal
+    zip_code: Code Postal
+    city: Ville
+
+  common: &common
+    image: image
+    pdf: pdf
+
+  sortable: &sortable
+    sequence: Ordre
+
+  manageable: &manageable
+    handled_at: Traité
+
+  models:
+    fields: &fields
+      common:
+        <<: *common
+
+      user:
+        <<: *identified
+        password: Mot de passe
+        password_confirmation: Confirmation du mot de passe
+        role: Role
+        remember_me: Se souvenir de moi
+
+
+
+
+
+
+
+
+
+
+      seo_meta:
+        title: Titre de la page
+        description: Description
+        meta_owner_id: Id du modèle cible (laisser vide pour l'index)
+        meta_owner_type: Nom du modèle cible
+        static_mode: Pour une page statique
+        static_action: Page

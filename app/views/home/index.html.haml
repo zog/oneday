@@ -1,0 +1,43 @@
+:ruby
+  days = Day.order('id DESC').page(params[:page] || 1).per(8)
+  tiles = days.map{|d| d.thumb.try(:photo).try(:large_tile) }
+
+- large_tiles = capture_haml do
+  - tiles.each_with_index do |t, i|
+    .large-tile{class: "tile-#{i}", style: "background-image: url(#{t})"}
+
+.baseline Live one day in someone else's shoes
+
+.days
+  - days.each_with_index do |d, i|
+    - content = capture_haml do
+      .overlay
+      .content
+        .country= d.country_name
+        .user= "by #{d.user.first_name}"
+      = large_tiles
+
+
+    - if i % 8 == 3
+      .day{class: "day-#{i}"}
+        = link_to d do
+          = image_tag d.thumb.try(:photo).try(:double_tile)
+          = content
+
+    - else
+      .day{class: "day-#{i}"}
+        = link_to d do
+          = image_tag d.thumb.try(:photo).try(:tile)
+          = content
+
+- content_for :scripts do
+  :coffeescript
+    days = $(".days")
+    $(".days .day").on 'mouseover', (e)->
+      days.attr 'class', ''
+      days.addClass "days"
+      days.addClass $(e.currentTarget).attr('class')
+
+    $(".days .day").on 'mouseout', (e)->
+      days.attr 'class', 'days'
+

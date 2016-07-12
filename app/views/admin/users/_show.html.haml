@@ -1,0 +1,24 @@
+
+.row
+  .col-md-4
+    = show_avatar resource.avatar, :medium
+
+  .col-md-8
+    .panel.panel-default
+      .panel-heading
+        - if resource.admin?
+          .pull-right.label.label-warning= "roles.#{resource.role}".t
+        - else
+          .pull-right.label.label-info= "roles.#{resource.role}".t
+
+        %h5.panel-title
+          = icon :info
+          Informations
+
+      %ul.list-group
+        %li.list-group-item
+          %strong
+            = icon_for(:email)
+            Email :
+
+          = resource.email

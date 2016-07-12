@@ -1,0 +1,12 @@
+%ul.moments
+  - resource.moments.each do |moment|
+    %li.moment
+      = image_tag moment.photo.thumb
+
+  %li.template-new
+    - o = resource.moments.build
+    = simple_form_for o, url: [resource, o] do |f|
+      = f.input :time
+      = f.input :photo
+      = f.input :legend
+      = default_actions

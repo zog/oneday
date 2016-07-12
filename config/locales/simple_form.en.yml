@@ -1,0 +1,39 @@
+en:
+  markdown: &markdown "Le texte peut être mis en forme en suivant les règles de la syntaxe <a href='http://fr.wikipedia.org/wiki/Markdown'>Markdown</a>."
+  <%= YAML::include("models_fields.en.yml") %>
+  simple_form:
+    "yes": 'Oui'
+    "no": 'Non'
+
+    required:
+      text: 'mandatory'
+      mark: '*'
+
+    labels:
+      <<: *fields
+
+      crop_settings: 'Cropping center:'
+
+    placeholders:
+      file: 'Browse'
+      string: 'Input text here'
+      number: 'Input number here'
+      datetime: 'AAAA/JJ/MM'
+      email: 'for ex: name@company.com'
+      enum: 'Pick one'
+      text: 'Input text here'
+      markdown: 'Input text here'
+      password: '••••••••'
+      pwdcalc_simple: '••••••••'
+      tel: 'for ex: 06 00 00 00 00'
+      integer: 'Input a value'
+      type: 'Pick one'
+      select: 'Pick one'
+      crop_settings: 'Pick one'
+      float: '0.000'
+      time: '00:00'
+      url: http://domain-name.com
+
+    hints:
+      user:
+        password: The password must be at least 8 characters

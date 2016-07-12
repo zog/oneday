@@ -1,0 +1,43 @@
+= simple_form_for resource do |f|
+  %h3 About me
+  %p.explain
+    Introduce yourself
+  %fieldset.user
+    = f.simple_fields_for :user do |ff|
+      Hi, my name is
+      = ff.input :first_name, label: false, wrapper_html: {class: "inline"}
+      and I live in
+      = f.input :country, label: false, wrapper_html: {class: "inline"}
+      .clear
+        .float
+          Here is my face:
+        .float= ff.input :avatar, label: false
+
+      And here are a few things you may want to know about me:
+      = ff.input :bio, label: false
+
+  %h3 This is my day
+  %p.explain
+    Here you can add the pictures of your day. You can add a time and a legend to each, but you don't have to.
+  %ul.moments
+    - resource.moments.build
+    = f.simple_fields_for :moments, f.object.moments.order(:seq) do |ff|
+      %li.moment.row{class: ff.object.new_record? && 'new-moment'}
+        .col-md-4
+          = ff.input :seq, as: :hidden
+          = ff.input :_destroy, as: :hidden
+          = ff.input :photo, required: true
+          = ff.input :time
+        .col-md-8
+          = ff.input :legend
+          = link_to '#', class: 'remove pull-right btn btn-default' do
+            = icon :times
+            Remove
+
+
+  = default_actions
+
+= render 'direct_download'
+= content_for :scripts do
+  :coffee
+    new MomentsForm()

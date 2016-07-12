@@ -1,0 +1,13 @@
+- if resource_class && resource_collection
+  - resource_name = resource_class.model_name.human.underscore
+  - resource_plural_name = resource_class.t
+  - title_content = render_partial_for_user 'index_panel_header'
+
+  .row
+    .col-md-12
+      = widget_box title_content, content_class: 'nopadding', before_title: collection_counter(resource_collection) do
+        = contextual_partial 'index_before_collection'
+
+        = collection resource_collection
+
+        = contextual_partial 'index_after_collection'

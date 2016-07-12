@@ -1,0 +1,113 @@
+.days.show
+  .header
+    font-size: 2em
+  .user-avatar
+    float: left
+    margin-right: 20px
+    margin-bottom: 20px
+
+  .moments
+    clear: both
+    margin-top: 20px
+  .moment
+    margin-bottom: 20px
+    background: $color-grey-darker
+    max-height: 600px
+    text-align: center
+    +relative
+    .time
+      +absolute
+      top: 10px
+      left: 10px
+      background: rgba(255,255,255,0.7)
+      padding: 10px
+      i
+        margin-right: 5px
+
+    .legend
+      +absolute
+      bottom: 10px
+      left: 10px
+      right: 100px
+      background: rgba(255,255,255,0.9)
+      text-align: left
+      padding: 15px
+      opacity: 0.3
+      +transition(opacity 0.4s)
+    &:hover
+      .legend
+        opacity: 1
+    img
+      display: inline-block
+      max-height: 100%
+      max-width: 100%
+#content .days
+  overflow: hidden
+  margin-right: -10px
+  margin-left: -10px
+  .day
+    padding: 10px
+    float: left
+    +relative
+    overflow: hidden
+
+  .overlay
+    +absolute(10px,10px,10px,10px)
+    background-image: url(/assets/overlay.png)
+    background-size: 100% 100%
+    background-position: 0 0
+
+  .content
+    +absolute(50%, 5%)
+    right: 5%
+    +transform(translateY(-50%))
+    color: white
+    text-align: center
+    .country
+      text-transform: uppercase
+      margin-bottom: 10px
+      font-size: 1.5em
+
+  .large-tile
+    +absolute(10px,10px,10px,10px)
+    +transform(translateY(-320px))
+    background-size: 940px 940px
+    background-position: 0 0
+    background-repeat: no-repeat
+
+  .day-1 .large-tile
+    background-position: -320px 0
+  .day-2 .large-tile
+    background-position: -640px 0
+  .day-3 .large-tile
+    background-position: 0px -320px
+  .day-4 .large-tile
+    background-position: -640px -320px
+  .day-5 .large-tile
+    background-position: 0px -640px
+  .day-6 .large-tile
+    background-position: -320px -640px
+  .day-7 .large-tile
+    background-position: -640px -640px
+
+  .day-0 .tile-0,
+  .day-1 .tile-1,
+  .day-2 .tile-2,
+  .day-3 .tile-3,
+  .day-4 .tile-4,
+  .day-5 .tile-5,
+  .day-6 .tile-6,
+  .day-7 .tile-7,
+  .day-8 .tile-8
+    display: none
+
+  &.day-0 .tile-0,
+  &.day-1 .tile-1,
+  &.day-2 .tile-2,
+  &.day-3 .tile-3,
+  &.day-4 .tile-4,
+  &.day-5 .tile-5,
+  &.day-6 .tile-6,
+  &.day-7 .tile-7,
+  &.day-8 .tile-8,
+    +transform(translateY(0%))

@@ -1,0 +1,98 @@
+:ruby
+  description = nil
+  title = nil
+
+  if resource.present?
+    if resource.respond_to?(:seo_meta) && meta = resource.seo_meta
+      description = meta.description
+      title = meta.title
+    end
+
+    if resource.class.respond_to?(:seo_meta) && meta = resource.class.seo_meta
+      description = meta.description if description.blank?
+      title = meta.title if title.blank?
+    end
+  elsif meta = SeoMeta.for_resource_index(params[:controller].classify).first
+    description = meta.description
+    title = meta.title
+  elsif meta = SeoMeta.for_static_action(params[:action]).first
+    description = meta.description
+    title = meta.title
+  end
+
+  if description.blank?
+    description = content_for?(:description) ? yield(:description) : 'app_name'.t
+  end
+
+  if title.blank?
+    title = content_for?(:title) ? yield(:title) : 'app_name'.t
+  end
+
+!!!
+= cc_html lang: :fr, class: 'no-js' do
+  %head
+    %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0, user-scalable=no", name: "viewport"}/
+    %meta{charset: "utf-8"}/
+    %meta{name: "apple-mobile-web-app-capable", content: "yes"}/
+
+    %title= title
+    %meta{name: "description", content: "#{description}"}/
+    = yield :meta
+
+    %link{href: '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', media: 'screen', rel: 'stylesheet'}
+
+    %meta{name: "apple-mobile-web-app-capable", content: "yes"}/
+    %meta{name: "mobile-web-app-capable", content: "yes"}/
+    %meta{name: "apple-mobile-web-app-status-bar-style", content: "black"}/
+
+    %link{ rel: "apple-touch-icon", href:"/images/apple-touch-icon.png"}/
+
+    = favicon_link_tag 'favicon.ico'
+    = stylesheet_link_tag 'application', media: 'all'
+    %link{href: "https://fonts.googleapis.com/css?family=Raleway:400,300,600", rel: "stylesheet", type: "text/css"}/
+    = yield :styles
+    = javascript_include_tag 'critical'
+    = csrf_meta_tags
+
+  - body_class = "#{yield :extra_body_class} #{controller_name} #{action_name}".strip
+  %body{class: body_class}
+    %header
+      .container-fluid
+        = link_to new_user_session_path, class: 'share-my-day' do
+          = icon :plus
+          Share my day
+        %h1
+          = link_to '/' do
+            = image_tag 'logo.png'
+            One day in a life
+    .scrolled-header
+      .container-fluid
+        = render partial: "shared/logo"
+
+
+
+    .scroll-wrapper
+      .inner-scroll-wrapper
+        - if content_for?(:content_header)
+          - content_header_class = yield :content_header_class
+          - content_header_style = yield :content_header_style
+          .content-header{class: content_header_class, style: content_header_style}
+            .container-fluid= yield :content_header
+
+        - content_class = yield :extra_content_class
+        #content{class: content_class}
+          .container-fluid
+
+            = yield
+
+
+    <!--[if IE 8]>
+    = javascript_include_tag 'shame'
+    <![endif]-->
+
+    <!--[if IE 9]>
+    = javascript_include_tag 'shame'
+    <![endif]-->
+
+    = javascript_include_tag "application"
+    = yield :scripts

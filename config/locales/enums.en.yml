@@ -1,0 +1,32 @@
+
+en:
+  enums:
+    file:
+      gravity:
+        north: Top
+        south: Bottom
+        east: Right
+        west: Left
+        north_west: Top Left
+        north_east: Top Right
+        south_west: Bottom Left
+        south_east: Bottom Right
+        center: Center
+
+    user:
+      role:
+        user: Utilisateur
+        admin: Administrateur
+
+    settings:
+      types:
+        float: Nombre avec décimal
+        integer: Nombre entier
+        boolean: Interrupteur vrai/faux
+        string: Texte
+        markdown: MarkDown
+        collection: Collection de valeur
+        date: Date
+        datetime: Horaire et Date
+        time: Horaire
+        image: Image

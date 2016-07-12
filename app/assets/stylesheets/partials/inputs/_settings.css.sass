@@ -1,0 +1,52 @@
+.form-group.settings
+  .table
+    margin-bottom: 0
+    table-layout: auto
+
+  .form-group
+    margin-bottom: 0
+
+  .row, .form-group
+    & + .form-group, & + .additional, & + .row
+      margin-top: 12px
+
+  .additional
+    &:empty
+      display: none
+
+  &.has-error
+    .table
+      border-color: $color-red
+
+      th, td
+        &:first-child
+          border-left-color: $color-red
+
+        &:last-child
+          border-right-color: $color-red
+
+        .form-control, .select2-choice
+          border-radius: 3px
+
+      tbody tr:last-child td
+        border-bottom-color: $color-red
+
+  &.has-success
+    .table
+      border-color: $color-green
+
+      th, td
+        &:first-child
+          border-left-color: $color-green
+
+        &:last-child
+          border-right-color: $color-green
+
+        .form-control, .select2-choice
+          border-radius: 3px
+
+      tbody tr:last-child td
+        border-bottom-color: $color-green
+
+.tpl
+  display: none

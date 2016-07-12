@@ -1,0 +1,21 @@
+- controller_breadcrumb
+
+= contextual_partial 'collection_header_before_pills', locals: local_assigns
+
+- in_admin do
+  - if resource_class && can?(:create, resource_class) && controller.route_exists_for?(:new)
+    - pill controller.resource_path(:new), class: 'btn-success' do
+      = icon_for(:create)
+      %span.text= 'actions.create'.t
+
+= contextual_partial 'collection_header_after_pills', locals: local_assigns
+
+- breadcrumb resource_class.t if resource_class
+
+- content_for :pills do
+  = pills
+- content_for :breadcrumb do
+  = breadcrumbs
+
+- content_for :page_title do
+  = resource_class ? resource_class.t : 'Boilerplate'

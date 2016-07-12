@@ -1,0 +1,24 @@
+{
+  "name": "Sümo Rails Boilerplate",
+  "description": "All you need to fast create a Rails app",
+  "repository": "https://github.com/3print/boilerplate",
+  "logo": "https://raw.githubusercontent.com/3print/boilerplate/master/app/assets/images/logo.png?token=AAPhudZrdUXPFMT8F-Lp3s5utZ3Zf5oqks5Wb82kwA%3D%3D",
+  "keywords": ["rails", "sumo", "boilerplate", "ruby"],
+  "env": {
+    "AWS_BUCKET": {
+      "description": "Name of your S3 bucket on AWS"
+    },
+    "AWS_ACCESS_KEY_ID": {
+      "description": "Set your AWS Access Key ID."
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "description": "AWS Access Secret Key"
+    },
+    "ASSET_HOST": {
+      "description": "URL of your S3 bucket (without the 'http://')"
+    }
+  },
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate; bundle exec rake db:seed"
+  }
+}

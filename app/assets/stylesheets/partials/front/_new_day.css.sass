@@ -1,0 +1,58 @@
+
+form.edit_day
+  .user
+    font-size: 1.5em
+    .row
+      margin-top: 10px
+    .form-group.inline
+      display: inline-block
+      width: 322px
+      margin: 0
+
+    .form-group:not(.file)
+      input, select, .select2-container .select2-choice, .select2-container-multi .select2-choice, textarea
+        border: none
+        border-radius: 0
+
+      input, .select2-container, .select2-container .select2-choice .select2-chosen, .select2-container-multi .select2-choice .select2-chosen
+        font-size: 1.1em
+        font-weight: bold
+
+      .select2-chosen
+        margin-top: 12px
+
+      .select2-container .select2-choice span.select2-arrow, .select2-container-multi .select2-choice span.select2-arrow
+        top: 12px
+
+      .select2-container .select2-choice abbr
+        top: 20px
+
+      input, select, .select2-container .select2-choice, .select2-container-multi .select2-choice
+        height: 60px
+
+  .explain
+    padding: 10px
+    background-color: $color-grey-light
+
+  .preview
+    .meta
+      display: none
+    .label
+      display: none
+
+  .file .preview
+    max-height: 220px
+    img
+      max-height: 220px
+
+  .float
+    float: left
+    margin-top: 10px
+    margin-right: 10px
+    .form-group
+      width: 300px
+  .clear
+    overflow: hidden
+  h3
+    border-bottom: 1px solid $color-grey-darker
+    margin-bottom: 20px
