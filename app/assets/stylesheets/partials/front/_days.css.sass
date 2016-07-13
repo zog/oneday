@@ -29,11 +29,13 @@
     border-left: 1px solid $color-grey
     margin: 0 40px
     overflow: visible
+    max-width: 100%
   .moment
     text-align: center
     margin-top: 100px
     clear: both
     padding: 0 50px
+    max-width: 100%
     +relative
     &:first-child
       margin-top: 0px
@@ -53,6 +55,7 @@
       display: inline-block
       +relative
       overflow: hidden
+      max-width: 100%
       &:after, &:before
         +absolute
         right: -50px
@@ -70,10 +73,11 @@
         top: auto
     img
       border: 10px solid $color-grey-light
-      height: 500px
+      max-height: 500px
       display: block
       margin: auto
       margin: 3px
+      max-width: 100%
     .legend
       width: 600px
       margin: auto
@@ -153,8 +157,19 @@
     z-index: 10
     .country
       text-transform: uppercase
-      margin-bottom: 10px
+      margin-bottom: 21px
       font-size: 1.5em
+      font-weight: 700
+      +relative
+      &:after
+        content: ""
+        +absolute
+        bottom: -10px
+        left: 50%
+        margin-left: -10px
+        width: 20px
+        height: 1px
+        border-bottom: 1px solid white
 
   .large-tile
     +absolute(10px,10px,10px,10px)
