@@ -30,21 +30,24 @@ namespace :misc do
     TPrint.log "scraping #{url}"
 
     doc =  Nokogiri::HTML open(url)
+    id = url.split('/').last
+    jsonUrl = "https://imgur.com/ajaxalbums/getimages/#{id}/hit.json?all=true"
     username = doc.css('a.post-account').first.content.strip
     TPrint.log "username: #{username}"
-    moments = []
-    doc.css('.post-image-container').each do |container|
-      img_url = container.css(".post-image-placeholder").first.attr('src')
-      title = container.css("h2").first
-      title = title && title.content
-      legend = container.css(".post-image-description").first
-      legend = legend && legend.content
-      moments << {
-        img_url: img_url,
-        title: title,
-        legend: legend,
-      }
-    end
+    # moments = []
+    # doc.css('.post-image-container').each do |container|
+    #   img_url = container.css(".post-image-placeholder").first.attr('src')
+    #   title = container.css("h2").first
+    #   title = title && title.content
+    #   legend = container.css(".post-image-description").first
+    #   legend = legend && legend.content
+    #   moments << {
+    #     img_url: img_url,
+    #     title: title,
+    #     legend: legend,
+    #   }
+    # end
+    moments = JSON.parse open(jsonUrl).read
 
     email = "#{username}@onedayina.life".downcase
     u = User.where(email: email).last
@@ -60,13 +63,14 @@ namespace :misc do
     d.country = country
     d.user = u
     d.save!
-    moments.each_with_index do |data, i|
+    moments["data"]["images"].each_with_index do |data, i|
       TPrint.log "moment", data
       m = d.moments.build
       m.seq = i
-      m.title = data[:title]
-      m.remote_photo_url = "http:#{data[:img_url]}"
-      m.legend = data[:legend]
+      m.title = data["title"]
+      url = "https://i.imgur.com/#{data["hash"]}#{data["ext"]}"
+      m.remote_photo_url = url
+      m.legend = data["description"]
       m.save!
     end
   end
