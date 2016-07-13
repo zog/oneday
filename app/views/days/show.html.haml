@@ -2,7 +2,7 @@
   - if @day.user.avatar.present?
     .user-avatar
       = image_tag @day.user.avatar.medium
-  %p= "Hi, my name is #{@day.user.first_name}, and I live in #{@day.country_name}"
+  %p.strong= "Hi, my name is #{@day.user.first_name}, and I live in #{@day.country_name}"
   %p
     Here is my day:
 
@@ -11,11 +11,10 @@
     %li.moment
       - if m.time.present?
         .time
-          = icon :'clock-o'
           = m.time.l(format: "%H:%M")
-      = image_tag m.photo.large
       - if m.title.present?
         .title= m.title
+      .img-container= image_tag m.photo.large
       - if m.legend.present?
         .legend= m.legend
 

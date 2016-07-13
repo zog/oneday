@@ -17,13 +17,15 @@
 @import partials/admin/welcome
 @import partials/admin/mobile
 
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,300)
+@import url(https://fonts.googleapis.com/css?family=Lora:400,700)
+
 .direct-upload-section
   visibility: hidden
   +fixed
 
 html, body
   width: 100%
-  height: 100%
   margin: 0
   overflow-x: hidden
   background-color: $color-grey-lighter
@@ -77,6 +79,7 @@ header
   z-index: 0
   +transition(opacity 0.3s)
   .logo
+    cursor: pointer
     margin-left: - ($scrolled_height - 10px)
     height: $scrolled_height - 20px
     width: $scrolled_height - 20px
@@ -94,3 +97,4 @@ header
 .baseline
   border-bottom: 2px solid black
   line-height: 1.7em
+  font-size: 1.25em

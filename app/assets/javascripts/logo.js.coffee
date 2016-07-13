@@ -1,4 +1,4 @@
-animateSky= (progress)->
+animateSky= (progress, selector)->
   red   = [0, 87,  192, 154, 0]
   green = [0, 111, 201, 35, 0]
   blue  = [0, 141, 202, 30, 0]
@@ -27,37 +27,39 @@ animateSky= (progress)->
   g = parseInt(g)
   b = parseInt(b)
 
-  $('.logo .sky').css 'background-color', "rgb(#{r}, #{g}, #{b})"
+  $('.sky', selector).css 'background-color', "rgb(#{r}, #{g}, #{b})"
 
-animateSun= (progress)->
+animateSun= (progress, selector)->
   angle = -50  + 100 * progress
-  $('.logo .sun').css 'transform', "rotate(#{angle}deg)"
+  $('.sun', selector).css 'transform', "rotate(#{angle}deg)"
 
-animateCar= (progress)->
+animateCar= (progress, selector)->
   left = Math.max(0, 100 * (progress-0.4)*4)
   left = Math.min(100, left)
-  $('.logo .car').css 'left', "#{left}%"
+  $('.car', selector).css 'left', "#{left}%"
 
-animateCity= (progress)->
+animateCity= (progress, selector)->
   left = - progress * 100
-  $('.logo .city').css 'left', "#{left}%"
+  $('.city', selector).css 'left', "#{left}%"
 
-setLogoProgress = (progress)->
+setLogoProgress = (progress, selector)->
+  selector ?= '.logo'
   progress = Math.max(0, progress)
   progress = Math.min(1, progress)
-  animateSky progress
-  animateSun progress
-  animateCar progress
-  animateCity progress
+  animateSky progress, selector
+  animateSun progress, selector
+  animateCar progress, selector
+  animateCity progress, selector
 
 window.animateLogo = ->
   setLogoProgress 0.5
-  height = $('.scroll-wrapper')[0].scrollHeight
+  height = $('body').height() - 220
   windowHeight = $(window).height()
-  $('body').on 'scroll', (e)->
-    progress =  - $('#content').offset().top / (height-windowHeight)
-    if progress < 0
-      setLogoProgress 0.5
+  $(document).on 'scroll', (e)->
+    console.log $('body').scrollTop()
+    progress =  ($('body').scrollTop() - 220) / (height-windowHeight)
+    if progress <= 0
+      setLogoProgress 0.5, "h1 .logo"
     else
       setLogoProgress progress
 
