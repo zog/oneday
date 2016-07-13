@@ -1,20 +1,28 @@
 .days.show
+  .scrolled-header
+    z-index: 1
+    .logo
+      margin-left: 0
+
   .header
     font-size: 1.6em
     text-align: center
-    margin-bottom: 30px
+    margin-top: 80px
+    margin-bottom: 50px
     p
       margin-bottom: 0
       padding: 0 200px
     .strong
       font-weight: 700
   .user-avatar
-    position: absolute
-    left: -20px
-    top: -30px
-    border-radius: 100px
-    overflow: hidden
-    border: 3px solid $color-grey
+    margin-bottom: 20px
+    text-align: center
+    img
+      display: inline-block
+      width: 100px
+      border-radius: 100px
+      overflow: hidden
+      border: 3px solid $color-grey
 
   .moments
     clear: both
@@ -25,8 +33,14 @@
   .moment
 
     +relative
-    padding-top: 540px
-    margin-bottom: 50px
+    padding-top: 615px
+    // margin-bottom: 100px
+    &:first-child
+      padding-top: 565px
+      .img-container
+        top: 50px
+      .title
+        top: 0
     .time
       +absolute
       width: 50px
@@ -41,7 +55,7 @@
       color: $color-blue
     .img-container
       +absolute
-      top: 30px
+      top: 100px
       overflow: hidden
       left: 50%
       +transform(translateX(-50%))
@@ -71,14 +85,17 @@
       margin: auto
       border-left: 1px solid $color-blue
       padding-left: 15px
+      padding-top: 10px
+      padding-bottom: 10px
     .title
       +absolute
-      top: 0
+      top: 50px
       left: 0
       right: 0
       text-align: center
       font-weight: 700
       font-size: 1.3em
+      padding-top: 15px
 
 #content .days
   overflow: hidden
