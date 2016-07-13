@@ -14,6 +14,8 @@
           = icon :'clock-o'
           = m.time.l(format: "%H:%M")
       = image_tag m.photo.large
+      - if m.title.present?
+        .legend= m.title
       - if m.legend.present?
         .legend= m.legend
 

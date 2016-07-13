@@ -24,7 +24,7 @@
       i
         margin-right: 5px
 
-    .legend
+    .legend, .title
       +absolute
       bottom: 10px
       left: 10px
@@ -35,8 +35,13 @@
       opacity: 0.3
       +transition(opacity 0.4s)
     &:hover
-      .legend
+      .legend, .title
         opacity: 1
+    .title
+      top: 10px
+      bottom: auto
+      font-size: 1.3em
+
     img
       display: inline-block
       max-height: 100%
