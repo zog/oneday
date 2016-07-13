@@ -30,6 +30,22 @@
           = image_tag d.thumb.try(:photo).try(:tile)
           = content
 
+.pagination
+
+  = link_to "/?page=#{days.current_page - 1}", class: "prev #{(days.current_page == 1) && "disabled"}" do
+    %svg{width: "15px", height: "30px", viewBox: '0 0 15 30'}
+      %line{stroke: "#333", x1: 15, y1: 0, x2: 0, y2: 15, strokeWidth: 1}
+      %line{stroke: "#333", x1: 15, y1: 30, x2: 0, y2: 15, strokeWidth: 1}
+  .page<>= "page #{days.current_page} of #{days.total_pages}"
+  = link_to "/?page=#{days.current_page + 1}", class: "next #{(days.current_page == days.total_pages) && "disabled"}" do
+    %svg{width: "15px", height: "30px", viewBox: '0 0 15 30'}
+      %line{stroke: "#333", x1: 0, y1: 0, x2: 15, y2: 15, strokeWidth: 1}
+      %line{stroke: "#333", x1: 0, y1: 30, x2: 15, y2: 15, strokeWidth: 1}
+
+.share
+  = link_to new_user_session_path, class: 'share-my-day' do
+    Share your day !
+
 - content_for :scripts do
   :coffeescript
     days = $(".days")

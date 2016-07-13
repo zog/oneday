@@ -33,12 +33,11 @@ html, body
 #content
   min-height: 500px
 
+
 .share-my-day
   font-family: 'Lato', sans-serif
   border-radius: 100px
-  +absolute
-  top: 0px
-  right: 0
+
   background-color: $text-color
   border: 1px solid $text-color
   color: white
@@ -50,6 +49,11 @@ html, body
     background-color: $color-grey-light
     text-decoration: none
     color: $text-color
+
+  header &
+    +absolute
+    top: 0px
+    right: 0
 
 .select2-container-multi.select2-container-active .select2-choices, .select2-container.select2-container-active .select2-choice
   +box-shadow(none)
@@ -102,6 +106,43 @@ header
 .scrolled
   .scrolled-header
     opacity: 1
+
+.share
+  text-align: center
+  width: 100%
+  margin-top: 20px
+.pagination
+  text-align: center
+  width: 100%
+  a, .page
+    font-family: 'Lato', sans-serif
+    background-color: $color-grey-lighter
+    border: 1px solid $color-grey
+    display: inline-block
+    height: 50px
+    margin: 0
+  .page
+    border-right: 0
+    border-left: 0
+    padding: 17px
+    font-weight: 700
+    line-height: 1em
+  .prev, .next
+    vertical-align: bottom
+    padding: 10px 15px 10px 15px
+    +transition(background-color 0.3s)
+    &:hover
+      background-color: $color-grey-light
+    &.disabled
+      background-color: $color-grey
+      svg
+        opacity: 0
+  .prev
+    border-top-left-radius: 100px
+    border-bottom-left-radius: 100px
+  .next
+    border-top-right-radius: 100px
+    border-bottom-right-radius: 100px
 
 
 .baseline
