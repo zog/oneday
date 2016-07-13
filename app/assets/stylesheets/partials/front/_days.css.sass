@@ -55,7 +55,11 @@
     float: left
     +relative
     overflow: hidden
-
+    &:hover
+      .overlay
+        z-index: 9
+      .content
+        z-index: 10
   .overlay
     +absolute(10px,10px,10px,10px)
     background-image: url(/assets/overlay.png)
@@ -73,9 +77,12 @@
       margin-bottom: 10px
       font-size: 1.5em
 
+
+
   .large-tile
     +absolute(10px,10px,10px,10px)
-    +transform(translateY(-320px))
+    opacity: 0
+    +transition(opacity 0.4s)
     background-size: 940px 940px
     background-position: 0 0
     background-repeat: no-repeat
@@ -95,16 +102,16 @@
   .day-7 .large-tile
     background-position: -640px -640px
 
-  .day-0 .tile-0,
-  .day-1 .tile-1,
-  .day-2 .tile-2,
-  .day-3 .tile-3,
-  .day-4 .tile-4,
-  .day-5 .tile-5,
-  .day-6 .tile-6,
-  .day-7 .tile-7,
-  .day-8 .tile-8
-    display: none
+  // .day-0 .tile-0,
+  // .day-1 .tile-1,
+  // .day-2 .tile-2,
+  // .day-3 .tile-3,
+  // .day-4 .tile-4,
+  // .day-5 .tile-5,
+  // .day-6 .tile-6,
+  // .day-7 .tile-7,
+  // .day-8 .tile-8
+  //   display: none
 
   &.day-0 .tile-0,
   &.day-1 .tile-1,
@@ -115,4 +122,4 @@
   &.day-6 .tile-6,
   &.day-7 .tile-7,
   &.day-8 .tile-8,
-    +transform(translateY(0%))
+    opacity: 1
