@@ -1,5 +1,5 @@
 :ruby
-  days = Day.order('id DESC').page(params[:page] || 1).per(8)
+  days = Day.order('id DESC').page(params[:page] || 1).per(13)
   tiles = days.map{|d| d.thumb.try(:photo).try(:large_tile) }
 
 - large_tiles = capture_haml do
@@ -18,7 +18,7 @@
       = large_tiles
 
 
-    - if i % 8 == 3
+    - if (i % 15 == 3) || (i % 15 == 9)
       .day{class: "day-#{i}"}
         = link_to d do
           = image_tag d.thumb.try(:photo).try(:double_tile)
