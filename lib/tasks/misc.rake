@@ -72,7 +72,11 @@ namespace :misc do
       url = "http://i.imgur.com/#{data["hash"]}#{data["ext"]}"
       m.remote_photo_url = url
       m.legend = CGI.unescapeHTML(data["description"]) if data["description"].present?
-      m.save!
+      tries = 5
+
+      while !m.save && tries > 0 do
+        tries = tries - 1
+      end
     end
   end
 end
