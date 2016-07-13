@@ -7,8 +7,15 @@
     Here is my day:
 
 %ul.moments
+  - portraits = 0
   - resource.moments.order(:seq).each do |m|
-    %li.moment
+    - klass = []
+    - if m.photo_meta.photo_width <  m.photo_meta.photo_height
+      - klass << :portrait
+      - klass << :reverse if portraits % 2 == 1
+      - portraits += 1
+    - klass << "with-title" if m.title.present?
+    %li.moment{class: klass}
       - if m.time.present?
         .time
           = m.time.l(format: "%H:%M")
@@ -17,6 +24,7 @@
       .img-container= image_tag m.photo.large
       - if m.legend.present?
         .legend= m.legend
+      .clearfix
 
 - content_for :scripts do
   :coffeescript

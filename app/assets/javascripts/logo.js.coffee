@@ -56,7 +56,6 @@ window.animateLogo = ->
   height = $('body').height() - 220
   windowHeight = $(window).height()
   $(document).on 'scroll', (e)->
-    console.log $('body').scrollTop()
     progress =  ($('body').scrollTop() - 220) / (height-windowHeight)
     if progress <= 0
       setLogoProgress 0.5, "h1 .logo"
