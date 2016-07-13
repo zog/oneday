@@ -164,21 +164,6 @@
     background-position: 0 0
     background-repeat: no-repeat
 
-  // .day-1 .large-tile
-  //   background-position: -320px 0
-  // .day-2 .large-tile
-  //   background-position: -640px 0
-  // .day-3 .large-tile
-  //   background-position: 0px -320px
-  // .day-4 .large-tile
-  //   background-position: -640px -320px
-  // .day-5 .large-tile
-  //   background-position: 0px -640px
-  // .day-6 .large-tile
-  //   background-position: -320px -640px
-  // .day-7 .large-tile
-  //   background-position: -640px -640px
-
   @for $j from 0 through 4
     &.day-#{$j}
       @for $i from 0 through 7
@@ -212,7 +197,7 @@
           .content, .large-tile
             display: none
 
-      @for $i from 0 through 3
+      @for $i from 0 through 2
         .day-#{$i}
           .overlay
             background: black
