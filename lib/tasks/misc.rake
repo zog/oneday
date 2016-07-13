@@ -68,10 +68,10 @@ namespace :misc do
       next if data["animated"] == true
       m = d.moments.build
       m.seq = i
-      m.title = data["title"]
+      m.title = CGI.unescapeHTML(data["title"])
       url = "http://i.imgur.com/#{data["hash"]}#{data["ext"]}"
       m.remote_photo_url = url
-      m.legend = data["description"]
+      m.legend = CGI.unescapeHTML(data["description"])
       m.save!
     end
   end
