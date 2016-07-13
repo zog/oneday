@@ -34,15 +34,22 @@ html, body
   min-height: 500px
 
 .share-my-day
+  font-family: 'Lato', sans-serif
+  border-radius: 100px
   +absolute
-  top: -20px
+  top: 0px
   right: 0
-  background-color: #333
+  background-color: $text-color
+  border: 1px solid $text-color
   color: white
   padding: 10px 20px
   z-index: 10
+  text-transform: uppercase
+  +transition(background-color 0.3s)
   &:hover
-    color: $color-grey-light
+    background-color: $color-grey-light
+    text-decoration: none
+    color: $text-color
 
 .select2-container-multi.select2-container-active .select2-choices, .select2-container.select2-container-active .select2-choice
   +box-shadow(none)
@@ -98,6 +105,7 @@ header
 
 
 .baseline
+  font-family: 'Lato', sans-serif
   border-bottom: 2px solid black
   line-height: 1.7em
-  font-size: 1.25em
+  font-size: 1.4em

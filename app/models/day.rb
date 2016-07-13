@@ -26,4 +26,8 @@ class Day < ActiveRecord::Base
   def thumb
     moments.first
   end
+
+  def random
+    moments.order('random()').first
+  end
 end

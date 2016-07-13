@@ -1,6 +1,6 @@
 :ruby
   days = Day.order('id DESC').page(params[:page] || 1).per(13)
-  tiles = days.map{|d| d.thumb.try(:photo).try(:large_tile) }
+  tiles = days.map{|d| d.random.try(:photo).try(:large_tile) }
 
 - large_tiles = capture_haml do
   - tiles.each_with_index do |t, i|
