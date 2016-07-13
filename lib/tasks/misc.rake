@@ -65,10 +65,11 @@ namespace :misc do
     d.save!
     moments["data"]["images"].each_with_index do |data, i|
       TPrint.log "moment", data
+      next if data["animated"] == true
       m = d.moments.build
       m.seq = i
       m.title = data["title"]
-      url = "https://i.imgur.com/#{data["hash"]}#{data["ext"]}"
+      url = "http://i.imgur.com/#{data["hash"]}#{data["ext"]}"
       m.remote_photo_url = url
       m.legend = data["description"]
       m.save!
