@@ -44,7 +44,7 @@
 
 = render 'direct_download'
 = content_for :scripts do
-  %script{src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBTIlmBHPn4vJvmXvBHYzb2Cw-j8VT_TeE"}
+  %script{src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCc7ts_zWAoFRm_kiA8rKuSxka3cmtw3QQ"}
 
   :coffee
     window.countries = #{Hash[*ISO3166::Country.all.map{|c| [c.alpha2, [{lat: c.min_latitude.to_f, lng: c.min_longitude.to_f}, {lat: c.max_latitude.to_f, lng: c.max_longitude.to_f}]]}.flatten(1)].to_json}
