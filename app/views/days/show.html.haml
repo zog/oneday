@@ -1,10 +1,14 @@
-.header
-  - if @day.user.avatar.present?
-    .user-avatar
-      = image_tag @day.user.avatar.medium
-  %p.strong= "Hi, my name is #{@day.user.first_name}, and I live in #{@day.country_name}"
-  %p
-    Here is my day:
+.header{class: @day.user.avatar.present? && 'with-avatar'}
+  .inner
+    - if @day.user.avatar.present?
+      .user-avatar
+        = image_tag @day.user.avatar.medium
+    %p.strong= "Hi, my name is #{@day.user.first_name}, and I live in #{@day.country_name}"
+    %p= @day.description.present? ? @day.description : "Here is my day:"
+
+
+.map-container
+  #map
 
 %ul.moments
   - portraits = 0
@@ -27,5 +31,24 @@
       .clearfix
 
 - content_for :scripts do
+  %script{src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBTIlmBHPn4vJvmXvBHYzb2Cw-j8VT_TeE"}
+
   :coffeescript
+    window.scrollLimit = $(".moments").offset().top
     animateLogo()
+
+    pos = {lat: #{resource.location.lat}, lng: #{resource.location.lng}}
+    $(".map-container").width $(window).width()
+    $(".map-container").css marginLeft: ($("#content .container-fluid").width() - $(".map-container").width())*0.5
+
+    map = new google.maps.Map $('#map')[0],
+      zoom: #{resource.location.zoom}
+      center: pos
+      disableDefaultUI: true
+      scrollwheel: false
+
+    marker = new google.maps.Marker
+      map: map
+      draggable: true
+      animation: google.maps.Animation.DROP
+      position: pos

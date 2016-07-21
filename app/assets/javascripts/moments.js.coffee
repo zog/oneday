@@ -4,6 +4,7 @@ class window.MomentsForm
     @initBehaviours()
     @initButtons()
     @setSeq()
+    @initMap()
 
   initBehaviours: ->
     $(document).on 'file:added', (e)=>
@@ -11,6 +12,41 @@ class window.MomentsForm
       @addNewMoment() if moment.hasClass "new-moment"
       moment.removeClass "new-moment"
 
+  initMap: ->
+    @map = new google.maps.Map $('#map')[0],
+      zoom: 10
+      center: {lat: 0, lng: 0}
+    @map.addListener 'click', (e)=>
+      @addMarker e
+
+    @mapContainer = $('.map-container')
+    @countrySelect = $('[name*=country]')
+    @countrySelect.change =>
+      @centerMap countries[@countrySelect.val()]
+      @mapContainer.addClass 'open'
+
+  addMarker: (e)->
+    unless @marker
+      @marker = new google.maps.Marker
+        map: @map
+        draggable: true
+        animation: google.maps.Animation.DROP
+    @marker.setPosition e.latLng
+    @marker.addListener 'dragend', (e)=>
+      @setLatLng e.latLng
+
+    @setLatLng e.latLng
+
+  setLatLng: (coords)->
+    $('[name*=lat]').val coords.lat
+    $('[name*=lng]').val coords.lng
+
+  centerMap: (coords)->
+    return unless coords
+    bounds = new google.maps.LatLngBounds()
+    bounds.extend new google.maps.LatLng(coords[0])
+    bounds.extend new google.maps.LatLng(coords[1])
+    @map.fitBounds bounds
 
   addNewMoment: ->
     newbie = @template.clone()

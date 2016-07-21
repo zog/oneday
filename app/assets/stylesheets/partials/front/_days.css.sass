@@ -1,4 +1,9 @@
 .days.show
+  #map
+    height: 300px
+    width: 100%
+    margin-bottom: 40px
+
   .scrolled-header
     z-index: 1
     .logo
@@ -7,16 +12,24 @@
   .header
     font-size: 1.6em
     text-align: center
-    margin-top: 80px
+    padding: 0 200px
+    &.with-avatar
+      text-align: left
+      .inner
+        padding-left: 120px
+        min-height: 100px
+    margin-top: 20px
     margin-bottom: 50px
+    .inner
+      +relative
     p
       margin-bottom: 0
-      padding: 0 200px
     .strong
       font-weight: 700
   .user-avatar
-    margin-bottom: 20px
-    text-align: center
+    // margin-bottom: 20px
+    // text-align: center
+    +absolute(0,0)
     img
       display: inline-block
       width: 100px

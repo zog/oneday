@@ -1,5 +1,15 @@
 
 form.edit_day
+  .map-container
+    margin: 10px 0
+    height: 0
+    overflow: hidden
+    +transition(height 0.5s)
+    &.open
+      height: 300px
+  #map
+    height: 300px
+    width: 100%
   .user
     font-size: 1.5em
     .row
@@ -12,7 +22,11 @@ form.edit_day
     .form-group:not(.file)
       input, select, .select2-container .select2-choice, .select2-container-multi .select2-choice, textarea
         border: none
+        border-bottom: 1px solid $color-grey
+        background-color: $color-grey-lighter !important
+        +box-shadow(none)
         border-radius: 0
+
 
       input, .select2-container, .select2-container .select2-choice .select2-chosen, .select2-container-multi .select2-choice .select2-chosen
         font-size: 1.1em

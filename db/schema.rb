@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160713063355) do
+ActiveRecord::Schema.define(version: 20160721135541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 20160713063355) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "permalink"
+    t.text     "description"
+    t.float    "lat"
+    t.float    "lng"
   end
 
   create_table "moments", force: true do |t|
@@ -68,7 +71,6 @@ ActiveRecord::Schema.define(version: 20160713063355) do
     t.string   "avatar"
     t.text     "avatar_meta"
     t.integer  "avatar_gravity"
-    t.text     "bio"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

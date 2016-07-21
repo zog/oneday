@@ -8,17 +8,21 @@
       = ff.input :first_name, label: false, wrapper_html: {class: "inline"}
       and I live in
       = f.input :country, label: false, wrapper_html: {class: "inline"}
+      .map-container
+        #map
+        = f.input :lat
+        = f.input :lng
       .clear
         .float
           Here is my face:
         .float= ff.input :avatar, label: false
 
-      And here are a few things you may want to know about me:
-      = ff.input :bio, label: false
+      And here are a few things you may want to know about my day:
+      = f.input :description, label: false
 
   %h3 This is my day
   %p.explain
-    Here you can add the pictures of your day. You can add a time and a legend to each, but you don't have to.
+    Here you can add the pictures of your day. You can set a title, a time and a legend to each, but you don't have to.
   %ul.moments
     - n = f.object.moments.build
     = f.simple_fields_for :moments, f.object.moments.order(:seq) + [n] do |ff|
@@ -40,5 +44,8 @@
 
 = render 'direct_download'
 = content_for :scripts do
+  %script{src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBTIlmBHPn4vJvmXvBHYzb2Cw-j8VT_TeE"}
+
   :coffee
+    window.countries = #{Hash[*ISO3166::Country.all.map{|c| [c.alpha2, [{lat: c.min_latitude.to_f, lng: c.min_longitude.to_f}, {lat: c.max_latitude.to_f, lng: c.max_longitude.to_f}]]}.flatten(1)].to_json}
     new MomentsForm()

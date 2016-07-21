@@ -51,7 +51,7 @@ setLogoProgress = (progress, selector)->
   animateCar progress, selector
   animateCity progress, selector
 
-window.animateLogo = ->
+window.animateLogo = ()->
   setLogoProgress 0.5
   height = $('body').height() - 220
   windowHeight = $(window).height()

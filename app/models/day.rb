@@ -23,6 +23,16 @@ class Day < ActiveRecord::Base
     _country.try :name
   end
 
+  def location
+    d = if lat.present? && lng.present?
+      {lat: lat, lng: lng, zoom: 8}
+    else
+      c = ISO3166::Country[country]
+      {lat: c.latitude_dec.to_f, lng: c.longitude_dec.to_f, zoom: 6}
+    end
+    OpenStruct.new d
+  end
+
   def thumb
     moments.first
   end
