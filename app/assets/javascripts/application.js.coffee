@@ -6,7 +6,6 @@ window.scrollLimit ?= 200
 hysteresis = 20
 $(document).on 'scroll', (e)->
   scroll = $('body').scrollTop()
-  console.log window.scrollLimit
   if $('body').hasClass('scrolled') && scroll < scrollLimit - hysteresis
     $('body').removeClass 'scrolled'
   else if ! $('body').hasClass('scrolled') && scroll > scrollLimit + hysteresis
