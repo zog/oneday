@@ -1,4 +1,4 @@
-# oneday
+# One day in a life
 
 ![](http://onedayina.life/assets/apple-icon-180x180.png) http://onedayina.life/
 
