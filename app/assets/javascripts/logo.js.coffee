@@ -56,7 +56,7 @@ window.animateLogo = ()->
   height = $('body').height() - 220
   windowHeight = $(window).height()
   $(document).on 'scroll', (e)->
-    progress =  ($('body').scrollTop() - 220) / (height-windowHeight)
+    progress =  ($(document).scrollTop() - 220) / (height-windowHeight)
     if progress <= 0
       setLogoProgress 0.5, "h1 .logo"
     else
@@ -73,5 +73,3 @@ window.animateLogoStatic = ->
     else
       setTimeout nextFrame, 50 / Math.max(Math.abs(50 - progress), 1)
   setTimeout nextFrame, 2000
-
-
