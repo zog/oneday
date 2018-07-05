@@ -8,6 +8,7 @@ gem 'settingslogic'
 gem 'sendgrid'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'colorize'
+gem 'sprockets', '~>2.12.5'
 
 # Auth
 gem 'devise'
@@ -15,7 +16,7 @@ gem 'devise-i18n'
 gem 'devise_masquerade'
 gem 'pundit'
 gem 'createsend'
-gem 'pwdcalc'
+gem 'pwdcalc', :git => 'https://github.com/trimentor/pwdcalc.git'
 
 # Database
 gem 'pg'
