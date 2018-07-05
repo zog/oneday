@@ -6,9 +6,10 @@ GIT
 
 GIT
   remote: https://github.com/trimentor/pwdcalc.git
-  revision: 905e3812917227928af0f02632d01dfa00ebd71d
+  revision: 135e17afab064585bd2f24fd3cb776396b346881
+  tag: 0.1.10
   specs:
-    pwdcalc (2.0.0)
+    pwdcalc (0.1.10)
 
 GEM
   remote: https://rubygems.org/
